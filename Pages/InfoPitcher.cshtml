@@ -1,0 +1,52 @@
+﻿@page
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <h1>Pitcher Mathematics behind the scenes</h1>
+    <img src="~/images/codedMath.jpg" style="height:170px; width:700px;" asp-append-version="true" />
+    <h5> Return to <a asp-page="/MainCalcPage">Main Calculation</a> Page</h5>
+
+    <br />
+    <h6> Every player makes a minimum of <u>$540,000</u>.</h6>
+    <p> <table>BASE SALARY: $540,000 (actual minimum salary in the MLB in 2018)</table> </p>
+    <br />
+
+    <h6>1.) The first calculation is <u>Games Played (GP)</u>. We are multiplying 10 to the 3rd power to GP entered by users.</h6>
+    <p> <table>Number of Games played (GP) x 10^3 (1000) </table> </p>
+
+    <h6>2.) The next on the calculation page is <u>Number of Innings Pitched (IP)</u>. We are multiplying 10 to the 3rd power to the (IP) entered by users.</h6>
+    <p> <table>Number of Innings Pitched (IP) x 10^3 (1000)</table> </p>
+
+    <h6>3.) The third on the calculation page is <u>Number of Strikeouts (SO)</u>. We are multiplying 10 to the 3rd power to the (K/SO) entered by users.</h6>
+    <p> <table> Number of Strikeouts (SO) x 10^3 (1000) </table> </p>
+
+    <h6>4.) The fourth on the calculation page is <u>Wins (W)</u>. We are multiplying 10 to the 3rd power to the number of (W) entered by users.</h6>
+    <p> <table> Number of Wins (W) x 10^3 (1000) </table> </p>
+
+    <h6>5.) The fifth on the calculation page is <u>Wins Above Replacement(WAR)</u>. We are multiplying 10 to the 6th power to the (WAR) entered by users.</h6>
+    <p> <table> Wins Above Replacement(WAR) x 10^6 (1000000) </table> </p>
+
+    <h6>6.) The sixth on the calculation page is <u>Winning Percentage (WPCT)</u>. We are multiplying 10 to the 5th power to the (WPCT) entered by users.</h6>
+    <p> <table> Winning Percentage (WPCT) x 10^5 (100000)</table> </p>
+
+    <h6>7.) The seventh on the calculation page is <u>DEFENSIVE STAT: Fielding Percentage (FPCT)</u>. We are multiplying 10 to the 3rd power to the (FPCT) entered by users.</h6>
+    <p> <table> DEFENSIVE STAT: Fielding Percentage (FPCT) x 10^3 (1000)</table> </p>
+
+    <h6>7.) The eighth on the calculation page is <u>Earned Run Average (ERA)</u>. Depending on what the user inputs ranging from 0-6+, will depend on multiplying 10 to the sum power to the (ERA) entered by users.</h6>
+    <p>
+        <table>
+            Earned Run Average (ERA):
+            ERA 0.00-1.99: ERA x 10^7 (10000000)
+            ERA 2.00-3.99: ERA x 10^6 (1000000)
+            ERA 4.00-5.99: ERA x 10^5 (100000)
+            ERA 6.00+: ERA x 10^4 (10000)
+        </table>
+    </p>
+
+    <br /> For more information on Baseball stats and what they mean, visit <a href="http://m.mlb.com/glossary/standard-stats"> MLB's Website </a> to learn more.
+</body>
+</html>

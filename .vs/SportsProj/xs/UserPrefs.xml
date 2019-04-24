@@ -1,0 +1,38 @@
+﻿<Properties StartupConfiguration="{7E6EF968-A0D5-4704-8477-992B5993264A}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+    <Files>
+      <File FileName="Pages/MainCalcPage.cshtml" Line="2" Column="53" />
+      <File FileName="Pages/PitcherCalc.cshtml" Line="38" Column="74" />
+      <File FileName="Pages/PitcherCalc.cshtml.cs" Line="57" Column="47" />
+      <File FileName="Pages/InfoPitcher.cshtml" Line="18" Column="48" />
+      <File FileName="Pages/BatCalc.cshtml" Line="20" Column="15" />
+      <File FileName="Pages/Index.cshtml" Line="81" Column="53" />
+      <File FileName="Pages/InfoBat.cshtml" Line="13" Column="10" />
+      <File FileName="Program.cs" Line="22" Column="44" />
+      <File FileName="Startup.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SportsProj" expanded="True">
+            <Node name="SportsProj" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Pages" expanded="True" />
+              <Node name="wwwroot" expanded="True">
+                <Node name="images" expanded="True" />
+              </Node>
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.SportsProj PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

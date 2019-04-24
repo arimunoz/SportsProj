@@ -1,0 +1,32 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model SportsProj.Pages.MainCalcPageModel
+@{
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Calc Page</title>
+</head>
+
+
+<body>
+
+    <div class="move">
+        <img src="~/images/manySports.png" style="height:200px; width:600px;" asp-append-version="true" />
+        <h1> Welcome to the Calculation Page!</h1>
+
+        <p>Select how you want to manually enter your player.</p>
+        <a asp-page="/BatCalc">Batting</a> <label>|</label> <a asp-page="/PitcherCalc">Pitching</a>
+
+
+        <h4>More information with the math behind the calculations </h4>
+        <p>Select <a asp-page="/InfoBat">Batting Calculation</a> page </p>
+        <p>Select <a asp-page="/InfoPitcher">Pitcher Calculation</a> page </p>
+       </div>
+</body>
+</html>

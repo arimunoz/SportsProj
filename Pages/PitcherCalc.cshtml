@@ -1,0 +1,50 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model PitcherCalcModel
+@{
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Pitcher Page</title>
+</head>
+<body>
+    <h1> Welcome to the Pitchers Page!</h1>
+    <img src="~/images/cubsplayers.jpg" style="height:200px; width:450px;" asp-append-version="true" />
+    <p>Select how you want to manually enter your player stats.</p>
+    <p> Return to <a asp-page="/MainCalcPage">Main Calculation</a> Page</p>
+    <form method="post">
+        <p> Enter amount of games played:</p> <input asp-for="GP" />
+        <br />
+        <br />
+
+        <p>Enter innings pitched:</p> <input asp-for="IP" />
+        <br />
+        <br />
+        <p>Enter strike outs:</p> <input asp-for="SO" />
+        <br />
+        <br />
+        <p>Enter number of wins:  </p>   <input asp-for="W" />
+        <br />
+        <br />
+        <p>Enter number of WAR:  </p>   <input asp-for="WAR" />
+        <br />
+        <br />
+        <p>Enter number of winning percentage:  </p>   <input asp-for="WPCT" />
+        <br />
+        <br />
+        <p>Enter number of fielding percentage:  </p>   <input asp-for="FPCT" />
+        <br />
+        <br />
+        <p>Enter number of ERA:  </p>   <input asp-for="ERA" />
+        <br />
+        <br />
+
+        <input type="submit" action="OnPost" />
+    </form>
+    <br />
+    <input asp-for="Message">
+</body>
+</html>

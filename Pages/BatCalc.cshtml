@@ -1,0 +1,58 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model SportsProj.Pages.BatCalcModel   
+@{
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1> Welcome to the Hitters Page!</h1>
+    <img src="~/images/baseball_banner.jpg" style="height:200px; width:600px;" asp-append-version="true" />
+    <p>Select how you want to manually enter your player stats.</p>
+    <p> Return to <a asp-page="/MainCalcPage">Main Calculation</a> Page</p>
+    <form method="post">
+        <p> Enter amount of games played:</p> <input asp-for="GP" />
+        <br />
+        <br />
+        <p>Enter number at bat:</p> <input asp-for="Ab" />
+        <br />
+        <br />
+        <p>Enter number of hits:</p> <input asp-for="H" />
+        <br />
+        <br />
+        <p>Enter number of homeruns:  </p>   <input asp-for="HR" />
+        <br />
+        <br />
+        <p>Enter number of runs batted in:</p> <input asp-for="RBI" />
+        <br />
+        <br />
+        <p>Enter number of stolen bases: </p><input asp-for="SB" />
+        <br />
+        <br />
+        <p>Enter AVG: </p> <input asp-for="Avg" />
+        <br />
+        <br />
+        <p>Enter OBP: </p> <input asp-for="OnBasePer" />
+        <br />
+        <br />
+        <p>Enter OPS: </p><input asp-for="OnBaseSlug" />
+        <br />
+        <br />
+        <p>Enter WAR:</p> <input asp-for="WAR" />
+        <br />
+        <br />
+        <p>Enter FPCT:</p> <input asp-for="Fpct" />
+        <br />
+        <br />
+
+        <input type="submit" action="OnPost" />
+    </form>
+    <br />
+    <input asp-for="Message">
+</body>
+</html>
