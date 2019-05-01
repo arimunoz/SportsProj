@@ -1,0 +1,107 @@
+﻿@page
+@model BattingModel
+@{
+}
+
+
+<script>function myFunction(x) {
+        $("#item_view").modal();
+    };
+    $(document).ready(function () {
+        $("#success-alert").hide();
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+            $("#success-alert").slideUp(500);
+        });
+    });</script>
+
+<html>
+
+<body>
+
+
+
+
+    <div class="container">
+        <div class="mail-box">
+            <aside class="lg-side">
+                <div class="inbox-head">
+                    <h3>Batting Stats</h3>
+                </div>
+
+                <br />
+                @{
+                    if (!string.IsNullOrEmpty(Model.Message))
+                    {
+                        <div class="alert alert-success" id="success-alert" style="margin-top: 40px;">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            <strong>@Model.Message ! </strong>
+                        </div>
+                    }
+                }
+
+                <div class="inbox-body" style="margin-top:20px;">
+                    <div class="mail-option">
+
+                        <table class="table table-inbox table-hover" style="border:2px solid black;">
+                            <thead>
+                                <tr class="unread">
+                                    <th class="col-sm-2">Rank</th>
+                                    <th class="col-sm-2">Player</th>
+                                    <th class="col-sm-2">Team</th>
+                                    <th class="col-sm-2">AB</th>
+                                    <th class="col-sm-2">R</th>
+                                    <th class="col-sm-2">H</th>
+                                    <th class="col-sm-2">2B</th>
+                                    <th class="col-sm-2">3B</th>
+                                    <th class="col-sm-2">HR</th>
+                                    <th class="col-sm-2">RBI</th>
+                                    <th class="col-sm-2">SB</th>
+                                    <th class="col-sm-2">CS</th>
+                                    <th class="col-sm-2">BB</th>
+                                    <th class="col-sm-2">SO</th>
+                                    <th class="col-sm-2">AVG</th>
+                                    <th class="col-sm-2">OBP</th>
+                                    <th class="col-sm-2">SLG</th>
+                                    <th class="col-sm-2">OPS</th>
+                                    <th class="col-sm-2">WAR</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.batting)
+                                {
+                                    <tr>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.rank</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.player</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.team</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.AB</h5></td>
+
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.R</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.H</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.2B</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.3B</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.HR</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.RBI</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.SB</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.CS</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.BB</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.SO</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.AVG</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.OBP</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.SLG</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.OPS</h5></td>
+                                        <td onclick="myFunction(this)" class="view-message  text-left"><h5>@item.WAR</h5></td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+</body>
+</html>
+

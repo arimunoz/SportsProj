@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SportsProj.Pages
 {
+    [Authorize]
     public class BatCalcModel : PageModel
     {
         [BindProperty]
@@ -72,6 +74,8 @@ namespace SportsProj.Pages
         public void OnGet()
         {
             Message = "Salary here.";
+        
+            //TEST Program in C#
 
             //Contract.Ensures(Contract.Result<string>() != null);
             // Console.WriteLine("Enter amount of games played: ");

@@ -37,3 +37,4 @@
 /Users/arelimunoz/Documents/Capstone/Project/SportsProj/obj/Release/netcoreapp2.2/SportsProj.dll
 /Users/arelimunoz/Documents/Capstone/Project/SportsProj/obj/Release/netcoreapp2.2/SportsProj.pdb
 /Users/arelimunoz/Documents/Capstone/Project/SportsProj/obj/Release/netcoreapp2.2/SportsProj.csproj.CopyComplete
+/Users/arelimunoz/Documents/Capstone/Project/SportsProj/obj/Release/netcoreapp2.2/Razor/Pages/Batting.g.cshtml.cs

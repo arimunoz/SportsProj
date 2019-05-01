@@ -37,3 +37,4 @@
 /Users/arelimunoz/Documents/Capstone/Project/SportsProj/obj/Debug/netcoreapp2.2/Razor/Pages/PitcherCalc.g.cshtml.cs
 /Users/arelimunoz/Documents/Capstone/Project/SportsProj/obj/Debug/netcoreapp2.2/Razor/Pages/Search.g.cshtml.cs
 /Users/arelimunoz/Documents/Capstone/Project/SportsProj/obj/Debug/netcoreapp2.2/Razor/Pages/InfoPitcher.g.cshtml.cs
+/Users/arelimunoz/Documents/Capstone/Project/SportsProj/obj/Debug/netcoreapp2.2/Razor/Pages/Batting.g.cshtml.cs

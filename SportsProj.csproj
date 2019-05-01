@@ -8,6 +8,9 @@
 
 
   <ItemGroup>
+    <None Remove="Pages\Batting.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="wwwroot\style\.DS_Store" />
     <None Include="wwwroot\style\bootstrap\.DS_Store" />
     <None Include="wwwroot\style\bootstrap\css\bootstrap.css" />
@@ -32,6 +35,11 @@
     <None Include="wwwroot\style\jquery\jquery.slim.min.map" />
     <None Include="wwwroot\images\LPF.png" />
     <None Include="wwwroot\images\manySports.png" />
+    <None Include="Pages\Players\Create.cshtml" />
+    <None Include="Pages\Players\Delete.cshtml" />
+    <None Include="Pages\Players\Details.cshtml" />
+    <None Include="Pages\Players\Edit.cshtml" />
+    <None Include="Pages\Players\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" />
@@ -43,6 +51,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.3" />
     <PackageReference Include="bootstrap" Version="4.3.1" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.2" />
+    <PackageReference Include="Dapper" Version="1.60.6" />
+    <PackageReference Include="MySql.Data" Version="8.0.15" />
   </ItemGroup>
 
   <ItemGroup>
@@ -71,8 +81,14 @@
     <Content Remove="wwwroot\images\pitcher.jpg" />
     <Content Remove="wwwroot\images\LPF.png" />
     <Content Remove="wwwroot\images\manySports.png" />
+    <Content Remove="Pages\Players\Create.cshtml" />
+    <Content Remove="Pages\Players\Delete.cshtml" />
+    <Content Remove="Pages\Players\Details.cshtml" />
+    <Content Remove="Pages\Players\Edit.cshtml" />
+    <Content Remove="Pages\Players\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>

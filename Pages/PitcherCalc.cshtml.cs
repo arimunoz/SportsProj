@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SportsProj.Pages
 {
+    [Authorize]
     public class PitcherCalcModel : PageModel
     {
         [BindProperty]
@@ -55,6 +57,7 @@ namespace SportsProj.Pages
                     + (WAR * Math.Pow(10,6))
                     + (WPCT * Math.Pow(10, 5))
                     + (FPCT * Math.Pow(10, 3))
+                    + (ERA * Math.Pow(10, 5.7))
 
             );
 
