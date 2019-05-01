@@ -1,0 +1,253 @@
+SEARCH PAGE INSTRUCTIONS VIA MICROSOFT 
+
+Go to Pages/Shared/_Layout.cshtml and add a tab to the nav-bar
+under navbar-collapse collapse
+    <li><a asp-page="/Player/Index">Players</a></li>
+
+Right click on project name and add > new folder > Name it Models
+    Create a class named Players.cs
+    public int ID { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string Team { get; set; }
+        public string Position {get; set;}
+
+        public ICollection<Team> Teams { get; set; }
+
+Within the Models folder create a class named Teams
+*I was getting the error [teams does not have a primary key] unless i added the StatValues enum and public * 
+    public enum StatValues{
+        A, B, C, D, F
+    }
+    public class Teams
+    {
+        public int TeamsID { get; set; }
+        public int PlayerID { get; set; }
+        public int StatID { get; set; }
+        public StatValues? StatValues { get; set; }
+
+        public Player Player { get; set; }
+        public Stat Stat { get; set; }
+
+ALso within the Models folder create a class called Stat.cs
+The DatabaseGenerated attribute allows the application to specify the primary key so the DB doesnt have to
+    public class Stat
+    {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int StatID { get; set; }
+        public string statName { get; set; }
+
+
+        public ICollection<Teams> Teams { get; set; }
+    }
+
+Now lets scaffold the Player Model
+Create a folder named Players under the Pages folder EX: Pages/Players
+Right click on Pages folder > add > new folder 
+Right click on the newly created folder > add > new scaffold item
+    Select Razor Pages using Entity Framework(CRUD) > add
+    for the model class, use the drop down and select PlayerTables.Models
+    For the data context class click the plus sign and change the generated name to 
+        PlayerTables.Models.AthleteStatsContext
+Click add
+
+/*
+Files created
+Pages/Players  : Create, Delete, Details, Edit, Index.
+Data/AthleteStatsContext.cs
+
+File updates
+Startup.cs : Changes to this file are detailed in the next section.
+appsettings.json : The connection string used to connect to a local database is added.
+*/
+
+This line should have been added to the startup.cs file
+services.AddDbContext<AthleteStatsContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("AthleteStatsContext")));
+
+
+In program.cs File update to look like so:
+add this using statement  > using Microsoft.Extensions.DependencyInjection;
+add this using statement > using PlayerTables.Models;
+
+public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var host = CreateWebHostBuilder(args).Build();
+
+            using(var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                try
+                {
+                    var context = services.GetRequiredService<AthleteStatsContext>();
+                    context.Database.EnsureCreated();
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred creating the DB");
+                }
+            }
+            host.Run();
+        }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
+    }
+}
+
+
+* RUN THE APP AND NAVIGATE TO THE PLAYERS TAB, YOU SHOULD SEE AN EMPTY TABLE WITH THE OPTION TO CREATE NEW* 
+
+update AthleteStatsContext.cs with the following
+        public DbSet<Player> Player { get; set; }
+        public DbSet<Teams> Teams { get; set; }
+        public DbSet<Stat> Stat { get; set; }
+
+
+NOW ITS TIME TO INITIALIZE THE DB WITH DATA 
+In the Data folder, create a class named DbInitializer.cs 
+
+public class DbInitializer
+    {
+        public static void Initialize(AthleteStatsContext context)
+        {
+            if (context.Player.Any())
+            {
+                return;
+            }
+
+            var players = new Player[]
+            {
+            new Player{FirstName="Cody",LastName="Bellinger",Team="Los Angeles Dodgers", Position="1B"},
+            new Player{FirstName="Tim",LastName="Anderson",Team="Chicago White Sox", Position="1B"},
+            new Player{FirstName="Carlos",LastName="Santana",Team="Cleveland Indians", Position="SS"},
+            new Player{FirstName="Anthony",LastName="Rendon",Team="Washington Nationals", Position="1B"},
+            new Player{FirstName="Jeff",LastName="McNeil",Team="New York Mets", Position="3B"},
+            new Player{FirstName="Elvis",LastName="Andrus",Team="Texas Rangers", Position="2B"},
+            new Player{FirstName="Jorge",LastName="Polanco",Team="Minnesota", Position="SS"},
+            new Player{FirstName="Christian",LastName="Walker",Team="Arizona Diamondbacks", Position="1B"},
+            new Player{FirstName="Austin",LastName="Meadows",Team="Tampa Bay Rays", Position="CF"},
+              new Player{FirstName="Jason",LastName="Heyward",Team="Chicago Cubs", Position="RF"},
+            new Player{FirstName="J.D.",LastName="Martinez",Team="Boston Red Soxs", Position="LF"},
+            new Player{FirstName="Trey",LastName="Mancini",Team="Baltimore Orioles", Position="LF"},
+            new Player{FirstName="Clint",LastName="Frazier",Team="New York Yankees", Position="RF"},
+            new Player{FirstName="Yasmani",LastName="Grandal",Team="Milwaukee Brewers", Position="C"},
+            new Player{FirstName="Nick",LastName="Markakis",Team="Atlanta Braves", Position="RF"},
+            new Player{FirstName="David",LastName="Peralta",Team="Arizona Diamondbacks", Position="RF"},
+            new Player{FirstName="Mike",LastName="Trout",Team="Los Angeles Angels", Position="CF"},
+            new Player{FirstName="Jean",LastName="Segura",Team="Philadelphia", Position="SS"},
+            new Player{FirstName="Paul",LastName="DeJong",Team="St. Louis Cardinals", Position="SS"},
+            new Player{FirstName="Pete",LastName="Alonso",Team="New York Mets", Position="1B"},
+            new Player{FirstName="Marcus",LastName="Semien",Team="Oakland Athletics", Position="SS"},
+            new Player{FirstName="Willson",LastName="Contreras",Team="Chicago Cubs", Position="C"},
+            new Player{FirstName="Shin-Soo",LastName="Choo",Team="Texas Rangers", Position="RF"},
+            new Player{FirstName="Hunter",LastName="Dozier",Team="Kansas City Royals" , Position="3B"},
+            new Player{FirstName="Freddie",LastName="Freeman",Team="Atlanta Braves" , Position="1B"},
+            new Player{FirstName="Nelson",LastName="Cruz",Team="Minnesota Brewers" , Position="DH"},
+            new Player{FirstName="Freddy",LastName="Galvis",Team="Toronto Blue Jays" , Position="SS"},
+            new Player{FirstName="Alex",LastName="Bregman",Team="Houston Astros" , Position="3B"},
+            new Player{FirstName="Adam",LastName="Eaton",Team="Washington Nationals" , Position="RF"},
+            new Player{FirstName="Dexter",LastName="Fowler",Team="St. Louis Cardinals", Position="1B"},
+            new Player{FirstName="Justin",LastName="Smoak",Team="Toronto Blue Jays" , Position="RF" },
+            new Player{FirstName="Wil",LastName="Myers",Team="San Diego Padres" , Position="RF"},
+            new Player{FirstName="Ben",LastName="Zobrist",Team="Chicago Cubs" , Position="LF"},
+            new Player{FirstName="Corey",LastName="Dickerson",Team="Pitsburgh Pirates", Position="LF"},
+            new Player{FirstName="Javier",LastName="Baez",Team="Chicago Cubs" , Position="SS"},
+            };
+
+
+            *Run app and you should be able to see table displayed
+
+I deleted the Edit and Delete links in the Players/Index page 
+Also delete the edit link looks like this <a asp-page="./Edit" asp-route-id="@Model.Player.PlayerID">Edit</a> ini the details page
+        Make sure the part in the quotes "" to the details page comes after the @page "{id:int?}" > this is so that the id isnt passed via url
+
+Go to Pages/Players/Details.cshtml.cs and find the onGetAsync() method
+make sure the line looks like so > Player = await _context.Player.Include(p => p.Teams).ThenInclude(t => t.Stat).AsNoTracking().FirstOrDefaultAsync(m => m.PlayerID == id);
+
+
+Edit Pages/Players/Create.cshtml.cs to look like so 
+ public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            var emptyPlayer = new Player();
+
+            if (await TryUpdateModelAsync<Player>(
+                emptyPlayer,
+                "Player",   // Prefix for form value.
+                p => p.FirstName, p => p.LastName, p => p.Team))
+            {
+
+                _context.Player.Add(Player);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
+            }
+            return null;
+        }
+            
+    }
+
+
+Add this line to Player.cs
+public string Secret { get; set; }
+
+Sort :
+go to index.cshtml.cs
+public string NameSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+
+
+        public IList<Player> Player { get;set; }
+
+        public async Task OnGetAsync(string sortOrder)
+        {
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc": "";
+            IQueryable<Player> playerSort = from p in _context.Player select p;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    playerSort = playerSort.OrderByDescending(p => p.LastName);
+                    break;
+                default:
+                    playerSort = playerSort.OrderBy(s => s.LastName);
+                    break;
+            }
+            Player = await _context.Player.ToListAsync();
+        }
+
+
+Go to Players/Index.cshtml
+<a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                   @Html.DisplayNameFor(model => model.Player[0].LastName)
+                </a>
+            </th>
+
+SEARCH BOX
+Go to Players/Index.cshtml.cs
+
+
+
+
+
+
+
+
+
